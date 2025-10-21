@@ -1,40 +1,42 @@
 # 🏀 NBA Shot Selection Evolution (2004–2024)
 
 ## 📝 Overview
-This repository contains a data science analysis that investigates the profound shift in NBA shot selection and offensive strategy over two decades, comparing the **2003–04 season** (the "mid-range era") with the **2023–24 season** (the "pace-and-space era").
 
-The project utilizes **shot-by-shot logs** to quantify the decline of the mid-range jump shot and the exponential rise of the three-point shot.  
-The primary deliverable is a set of comparative visualizations (e.g., **Shot Density Maps**, **Frequency Histograms**) that clearly capture this evolution — often referred to as the **"Three-Point Revolution."**
+This project investigates how **NBA shot selection and offensive philosophy** have evolved over two decades, contrasting the **2003–04 "Mid-Range Era"** with the **2023–24 "Pace-and-Space Era"**.
+
+Using shot-by-shot data, the analysis quantifies:
+- The decline of the **mid-range jumper**
+- The exponential rise of the **three-point shot**, often called the *Three-Point Revolution*
+
+The deliverables include a series of comparative visualizations (e.g., **Shot Density Maps**, **Shot Distance Histograms**) illustrating the shift in offensive geometry across eras.
 
 ---
 
 ## 📊 Dataset Details
 
-The analysis relies on granular shot log data for the two bookend seasons. The data structure must be consistent to allow for direct comparison between the two decades.
+The analysis compares **two full NBA seasons** with consistent shot log structures to ensure valid comparison.
 
-| Feature | 2003–04 Season Data (from `shots.ipynb`) | 2023–24 Season Data (Expected) |
-|----------|------------------------------------------|--------------------------------|
-| **Source** | Kaggle: `NBA_2004_Shots.csv` (used in `shots.ipynb`) | Expected to be sourced from a comparable data API (e.g., NBA Stats, other public datasets) |
-| **Focus** | ≈ 190,000 shot attempts for 2003–04 | All shot attempts for the 2023–24 season |
-| **Key Columns** | `SHOT_DISTANCE`, `LOC_X`, `LOC_Y`, `SHOT_MADE`, `SHOT_TYPE` | Equivalent columns are necessary for comparative analysis |
+| Feature | 2003–04 Season Data | 2023–24 Season Data (Expected) |
+|----------|--------------------|-------------------------------|
+| **Source** | Kaggle: `NBA_2004_Shots.csv` (via `shots.ipynb`) | Expected via NBA Stats API or public datasets |
+| **Shots Included** | ≈190,000 shot attempts | All available shot attempts |
+| **Focus** | Mid-Range Heavy Era | Pace-and-Space Era |
+| **Key Columns** | `SHOT_DISTANCE`, `LOC_X`, `LOC_Y`, `SHOT_MADE`, `SHOT_TYPE` | Equivalent columns required |
 
----
+### 🔑 Critical Features for Trend Analysis
 
-### 🔍 Critical Columns for Trend Analysis
-
-The following features enable the core trend analysis:
-
-- **`SHOT_DISTANCE`** – Used to plot the frequency distribution of shots across all ranges (in feet).  
-- **`SHOT_TYPE`** – Categorizes attempts as 2-Point or 3-Point attempts.  
-- **`SHOT_MADE`** – Used to calculate efficiency metrics like Field Goal Percentage (FG%) and Effective Field Goal Percentage (eFG%) by zone.  
-- **`LOC_X` / `LOC_Y`** – Used to generate and compare shot density maps (shot charts).
+- **`SHOT_DISTANCE`** — enables frequency distributions by range (ft)
+- **`SHOT_TYPE`** — categorizes attempts (2PT vs. 3PT)
+- **`SHOT_MADE`** — supports efficiency metrics (FG%, eFG%)
+- **`LOC_X` / `LOC_Y`** — used to generate shot density maps
 
 ---
 
-## 🛠️ Setup and Installation
+## 🛠️ Setup & Installation
 
 ### Dependencies
-You must have the following Python libraries installed:
+
+Install the required Python packages:
 
 pip install pandas numpy matplotlib seaborn kaggle
 
@@ -55,4 +57,11 @@ Since a three-point shot is worth **50% more** than a two-point shot, teams have
 | 🔄 **Player Roles** | More defined positional roles (e.g., Centers primarily near the basket). | All players, including Centers and Forwards, are now expected to have 3-point range. | **Positional Fluidity:** The rise of *“positionless basketball”* — every player must be a floor-spacer to maintain offensive efficiency and prevent paint congestion. |
 
 ---
+
+## 🖼️ Visual Interpretation
+
+| Visualization | 2003–04 Season | 2023–24 Season | Insight |
+|----------------|----------------|----------------|----------|
+| **Shot Density Map (Shot Chart)** | High density in the mid-range areas (elbows, baseline corners) and under the basket | High density exclusively at the rim and around the full three-point arc, forming a “Homer Simpson Donut” shape | Clear visual evidence of the mid-range disappearance and the dominance of rim and perimeter shots |
+| **Shot Distance Histogram** | Bimodal or tri-modal distribution with peaks at 0–5 ft (rim), 10–20 ft (mid-range), and a smaller peak at 22+ ft (three-point range) | Strong bimodal distribution with peaks at 0–5 ft and 22+ ft, and near-zero frequency in the mid-range zone | Quantifies the “Three-and-Rim” offensive shift — mid-range nearly eliminated |
 
